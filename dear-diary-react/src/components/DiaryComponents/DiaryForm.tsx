@@ -9,7 +9,6 @@ import { addCard, fetchCards } from "./cardSlice";
 import { Cards } from "./cardSlice";
 import { useSelector } from "react-redux";
 import { RootState } from "../../app/store";
-import db from "../../firebase";
 
 let count = 1;
 export const DiaryForm = () => {
@@ -33,7 +32,7 @@ export const DiaryForm = () => {
   };
   const handleSubmit = (event: { preventDefault: () => void }) => {
     event.preventDefault();
-    if (inputValue == "" || inputValue2 == "") return alert("Enter Details");
+    if (inputValue === "" || inputValue2 === "") return alert("Enter Details");
 
     const newCard: Cards = {
       id: "",

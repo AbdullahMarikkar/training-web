@@ -27,13 +27,11 @@ function* addCardSaga(action: AddCardAction): Generator<any, any, any> {
   console.log("addCardSaga");
   try {
     const { title, description, userName } = action.payload;
-    const docRef = yield addDoc(collection(db, "cards"), {
+    yield addDoc(collection(db, "cards"), {
       title,
       description,
       userName,
     });
-    const newCard: Cards = { id: docRef.id, title, description, userName };
-    // yield put(addCard(newCard));
   } catch (error) {
     console.log("Error adding card:", error);
   }

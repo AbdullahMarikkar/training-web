@@ -1,8 +1,5 @@
 import Container from "@mui/material/Container";
-import {
-  DiaryForm,
-  RecipeReviewCard,
-} from "../../components/DiaryComponents/DiaryForm";
+import { DiaryForm } from "../../components/DiaryComponents/DiaryForm";
 
 function DiaryHome() {
   return (

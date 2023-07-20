@@ -1,20 +1,10 @@
-import React, { useState } from "react";
 import logo from "../../logo.svg";
 import "../../App.css";
 import RandomButton from "../../components/Buttons/RandomButton";
 import Box from "@mui/material/Box";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { Container, Grid, Typography } from "@mui/material";
 
 function SignIn() {
-  const themeBackground = createTheme({
-    palette: {
-      background: {
-        default: "linear-gradient(to right bottom, #430089, #82ffa1)",
-      },
-    },
-  });
-
   return (
     <Container
       maxWidth={false}
