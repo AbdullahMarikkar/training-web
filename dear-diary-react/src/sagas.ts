@@ -7,9 +7,13 @@ import {
   takeEvery,
   takeLatest,
 } from "redux-saga/effects";
-import { addCard, setCards, fetchCards } from "./cardSlice";
+import {
+  addCard,
+  setCards,
+  fetchCards,
+} from "./components/DiaryComponents/cardSlice";
 import { addDoc, collection, onSnapshot } from "firebase/firestore";
-import db from "../../firebase";
+import db from "./firebase";
 
 interface Cards {
   id: string;
@@ -24,7 +28,6 @@ interface AddCardAction {
 }
 
 function* addCardSaga(action: AddCardAction): Generator<any, any, any> {
-  console.log("addCardSaga");
   try {
     const { title, description, userName } = action.payload;
     yield addDoc(collection(db, "cards"), {
@@ -47,7 +50,6 @@ function createCardsChannel() {
       emit(cards);
     });
 
-    // Return unsubscribe function
     return () => {
       unsubscribe();
     };

@@ -13,9 +13,9 @@ import { RootState } from "../../app/store";
 let count = 1;
 export const DiaryForm = () => {
   const dispatch = useDispatch();
-  const [inputValue, setInputValue] = useState("");
-  const [inputValue2, setInputValue2] = useState("");
-  const [showCard, setShowCard] = useState(false);
+  const [titleName, setTitleName] = useState("");
+  const [descriptionField, setDescriptionField] = useState("");
+
   const cards = useSelector((state: RootState) => state.card.cards);
   const userName = useSelector((store: RootState) => store.createUser.userName);
 
@@ -25,25 +25,25 @@ export const DiaryForm = () => {
   }, [dispatch]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(event.target.value);
+    setTitleName(event.target.value);
   };
   const handleChange2 = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue2(event.target.value);
+    setDescriptionField(event.target.value);
   };
   const handleSubmit = (event: { preventDefault: () => void }) => {
     event.preventDefault();
-    if (inputValue === "" || inputValue2 === "") return alert("Enter Details");
+    if (titleName === "" || descriptionField === "")
+      return alert("Enter Details");
 
     const newCard: Cards = {
       id: "",
-      title: inputValue,
-      description: inputValue2,
+      title: titleName,
+      description: descriptionField,
       userName: userName,
     };
     dispatch(addCard(newCard));
-    setShowCard(true);
-    setInputValue("");
-    setInputValue2("");
+    setTitleName("");
+    setDescriptionField("");
   };
 
   return (
@@ -58,7 +58,7 @@ export const DiaryForm = () => {
           <div style={{ display: "flex" }}>
             <TextField
               label="Submit New"
-              value={inputValue}
+              value={titleName}
               onChange={handleChange}
               sx={{
                 borderRadius: "30px",
@@ -89,7 +89,7 @@ export const DiaryForm = () => {
           </div>
           <TextField
             onChange={handleChange2}
-            value={inputValue2}
+            value={descriptionField}
             label="Enter Description"
             inputProps={{
               style: { height: "60px" },

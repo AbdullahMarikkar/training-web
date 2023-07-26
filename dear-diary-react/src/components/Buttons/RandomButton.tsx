@@ -14,7 +14,7 @@ export default function MyApp() {
   const [randomName, setRandomName] = React.useState("");
 
   const handleClick = () => {
-    navigate("/DiaryHome"); // Navigate to the "/other" route
+    navigate("/diary-home"); // Navigate to the "/other" route
     dispacth(createUserName(randomName));
   };
 

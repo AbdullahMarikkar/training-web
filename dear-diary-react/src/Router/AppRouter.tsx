@@ -14,7 +14,7 @@ function AppRouter() {
 const routeSignInToDiaryHome = (
   <>
     <Route path="/" element={<SignIn />} />
-    <Route path="/DiaryHome" element={<DiaryHome />} />
+    <Route path="/diary-home" element={<DiaryHome />} />
   </>
 );
 
